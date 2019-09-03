@@ -143,10 +143,25 @@ displayTodosButton.addEventListener('Click', function() {
 
 <body>
     <h1>Todo List</h1>
+<div>
+    <button onclick="handlers.displayTodos()">Display Todos</button>
+    <button onclick="handlers.toggleAll()">Toggle All</button>
+</div>
 
-    <button id="displayTodosButton">Display Todos</button>
-    <button>Toggle All</button>
+<div>
+<button onclick="handlers.addTodo()">Add</button>
+<input id="addTodoTextInput" type="text"></input>
+</div>
 
+<div>
+    <button onclick="handlers.changeTodo()">Change Todo</button>
+    <input id="changeTodoPositionInput" type="number">
+    <input id="changeTodoTextInput" type="text">
+</div>
+<div>
+    <button onclick ="handlers.deleteTodo()">Delete</button>
+    <input id="deltedTodoPositionInput" type="number">
+</div>
     <script src="script.js"></script>
 </body>
 </html>
