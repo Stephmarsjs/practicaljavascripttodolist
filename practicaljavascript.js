@@ -179,13 +179,43 @@ var view = {
                 todoTextWithCompletion = '( )' + todo.todoText;
 
             }
-
-        todoLi.textContent = todoList.todos[i].todoText;
+        
+        todoLi.id = i;    
+        todoLi.textContent = todoTextWithCompletion;
+        todoLi.appendChild(this.createDeleteButton());
         todosUl.appendChild(todoLi);
 
         }
+    },
+    createDeleteButton: function() {
+        var deleteButton= document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'deleteButton';
+        return deleteButton;
+    },
+    setupEventListeners: function(){
+        var todosUl = document.querySelector('ul');
+
+        todosUl.addEventListener('click', function(event) {
+            // Get the element that was clicked on.
+            var elementClicked = event.target;
+
+            // Check if elementClicked is a delete button.
+            if(elementClicked.className === 'deleteButton') {
+                handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+            }
+        });
+        }
     }
 };
+
+var todosUl = document.querySelector('ul');
+
+todosUl.addEventListener('click', function(event){
+    console.log(event.target.parentNode.id);
+
+});
+
 var displayTodosButton = document.getElementById('displayTodosButton');
 var toggleAllButton = document.getElementById('toggleAllButton');
 
