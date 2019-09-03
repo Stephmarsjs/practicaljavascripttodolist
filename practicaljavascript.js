@@ -128,6 +128,64 @@ var todoList = {
         this.displayTodos();
     }
 };
+var handlers ={
+    displayTodos: function() {
+        var addTodoTextInput = document.getElementById('addTodoTextInput'); 
+        todiList.addTodo(addTodoTextInput.value);
+        addTodoTextInput.value = '';
+    },
+    changeTodo: function() {
+        var changeTodoPositionInput = document.getElementById('addTooTextInput');
+        var changeTodoTextInput = document.getElementById('changeTodoTextInput');
+        todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+        changeTodoPositionInput.value = '';
+        changeTodoTextInput.value = '';
+    },
+    deleteTodo: function() {
+        var deleteTodoPositionInput = document.getElementById('delteTodoPositionInput');
+        todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+        deleteTodoPositionInput.value = '';
+    },
+    toggleCompleted: function() {
+        var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+        todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+        toggleCompletedPositionInput.value = '';
+    },
+    toggleAll: function() {
+        todoList.toggleAll();
+    }
+};
+
+var view = {
+    displayTodos:function() {
+        var todosUl = document.querySelector('ul');
+        todosUl.innerHTML = '';
+        for (var i =0; i < todoList.todos.length; i++) {
+        var todoLi = document.createElement('li');
+
+            // '(x) todoText'
+            // var todoTextWithCompletion = '';
+            // if (todo.completed === true)
+                //(x) todoText
+            // else
+                //() todoText
+            //todoLi.textContent = todoTextWithCompletion;
+            
+            var todoTextWithCompletion ='';
+            if (todo.completed === true) {
+                todoTextWithCompletion = '(x)' + todo.todoText;
+
+            } else {
+                todoTextWithCompletion = '( )' + todo.todoText;
+
+            }
+
+        todoLi.textContent = todoList.todos[i].todoText;
+        todosUl.appendChild(todoLi);
+
+        }
+    }
+};
 var displayTodosButton = document.getElementById('displayTodosButton');
 var toggleAllButton = document.getElementById('toggleAllButton');
 
@@ -155,13 +213,26 @@ displayTodosButton.addEventListener('Click', function() {
 
 <div>
     <button onclick="handlers.changeTodo()">Change Todo</button>
-    <input id="changeTodoPositionInput" type="number">
-    <input id="changeTodoTextInput" type="text">
+    <input id="changeTodoPositionInput" type="number"></input>
+    <input id="changeTodoTextInput" type="text"></input>
 </div>
 <div>
     <button onclick ="handlers.deleteTodo()">Delete</button>
     <input id="deltedTodoPositionInput" type="number">
 </div>
+
+<div>
+    <buttton onclick="handlers.toggleCompleted()">Toggle Completed</buttton>
+    <input id="toggleCompletedPositionInput" type="number"></input>
+</div>
+
+<ul>
+  <li></li>  
+  <li></li>
+</ul>
+
+<ul></ul>
+
     <script src="script.js"></script>
 </body>
 </html>
