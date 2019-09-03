@@ -125,5 +125,28 @@ var todoList = {
                 this.todos[i].completed = true;
             }
         }
+        this.displayTodos();
     }
 };
+var displayTodosButton = document.getElementById('displayTodosButton');
+var toggleAllButton = document.getElementById('toggleAllButton');
+
+displayTodosButton.addEventListener('Click', function() {
+    todoList.displayTodos();
+});
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css"></link>
+</head>
+
+<body>
+    <h1>Todo List</h1>
+
+    <button id="displayTodosButton">Display Todos</button>
+    <button>Toggle All</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
